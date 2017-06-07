@@ -1,7 +1,9 @@
 {
   "variables": {
     "aws_access_key": "",
-    "aws_secret_key": ""
+    "aws_secret_key": "",
+    "vpc_id": "{{env `VPC_ID`}}",
+    "subnet_id": "{{env `SUBNET_ID`}}"
   },
   "builders": [{
     "type": "amazon-ebs",
@@ -11,7 +13,9 @@
     "source_ami": "ami-844e0bf7",
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
-    "ami_name": "packer-nodejs-demo {{timestamp}}"
+    "ami_name": "packer-nodejs-demo {{timestamp}}",
+    "vpc_id": "{{user `vpc_id`}}",
+    "subnet_id": "{{user `subnet_id`}}"
   }],
   "provisioners": [
   {
